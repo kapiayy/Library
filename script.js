@@ -44,7 +44,7 @@ function displayBooks(){
     
     bookContainer.innerHTML = ''
     myLibrary.forEach((element) => {
-        
+    
     const BookInfo = document.createElement("div")
     const Title = document.createElement("div")
     const Author = document.createElement("div")
@@ -57,6 +57,8 @@ function displayBooks(){
     changeReadButton.classList.add("read-button")
     removeButton.classList.add("remove-button")
     
+    removeButton.setAttribute("data-id", element.id)
+changeReadButton.setAttribute("data-id", element.id)
     Title.classList.add("title")
     Author.classList.add("author")
     Pages.classList.add("pages")
@@ -75,12 +77,17 @@ function displayBooks(){
     Pages.textContent = element.pages
     Read.textContent = element.read
     
-    removeButton.addEventListener("click", () => {
-    myLibrary =myLibrary.filter(book => book.id != element.id)
+    removeButton.addEventListener("click", (e) => {
+    const BookId = e.target.getAttribute("data-id")
+    myLibrary = myLibrary.filter(book => book.id != BookId)
     displayBooks()
 })
-    changeReadButton.addEventListener("click", () => {
-        element.read = element.read === 'Yes' ? 'No' : 'Yes'
+    changeReadButton.addEventListener("click", (e) => {
+        const BookId = e.target.getAttribute("data-id")
+        const book = myLibrary.find(b => b.id === BookId)
+        if(book){
+            book.read = book.read === 'Yes' ? 'No' : 'Yes'
+        }
         displayBooks()
     })
 })
