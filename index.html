@@ -9,7 +9,35 @@
 </head>
 <body>
     <div class="container">
+      <div class="header">
+        <div class="title-header">Title</div>
+        <div class="author-header">Author</div>
+        <div class="pages-header">Pages</div>
+        <div class="read-header">Read</div>
+        
+      </div>
       
+      <button class="add-book">Add Book</button>
     </div>
+    <div class="centerpoint">
+      <dialog>
+        <form id="form">
+          <label for="Author"></label>
+          <input type="text" id="author" name="author" placeholder="Author">
+          <label for="Title"></label>
+          <input type="text" id="title" name="title" placeholder="Title">
+          <label for="Pages"></label>
+          <input type="text" id="pages" name="pages" placeholder="Pages ex: 68">
+          
+          <div class="read-checkbox">
+            <input type="checkbox" id="read" name="read">
+            <label for="read" style="font-size: 1rem;"> read</label>
+            
+            
+          </div>
+        </form>
+        <button id="dialog-button" type="button" form="form">ADD</button>
+      </dialog>
+      </div>
 </body>
 </html>
